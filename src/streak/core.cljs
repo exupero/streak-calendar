@@ -35,7 +35,7 @@
 (defn spy [x] (println x) x)
 (defn ui [actions]
   (fn [{:keys [year]}]
-    (let [width 147]
+    (let [width 164]
       [:div {:id "root"}
        [:a {:id "download" :href "#" :onclick (event actions :download)} "Download"]
        [:div {:id "decrement-year"
@@ -49,7 +49,9 @@
         (let [start (js/Date. year 0 1)
               stop (js/Date. (inc year) 0 1)
               size 18]
-          [:g {:transform "translate(1,14)"}
+          [:g {:transform "translate(1,1)"}
+           [:text {:transform (str "translate(" (+ 14 (* size 7)) ",0) rotate(90)")
+                   :dy -5} year]
            [:g {}
             (for [m (range 12)
                   :let [d (js/Date. year m 1)
@@ -59,9 +61,6 @@
                       :text-anchor "end"}
                (month d)])]
            [:g {:transform "translate(17,0)"}
-            [:text {:x (-> 7 (* size) (/ 2))
-                    :dy -2
-                    :text-anchor "middle"} year]
             (for [d (js->clj (.days js/d3.time start stop))]
               [:rect {:class "day"
                       :x (* size (day d))
