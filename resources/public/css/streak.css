@@ -8,7 +8,7 @@ body {
 
 #download {
   display: block;
-  margin: 1rem 0.3rem;
+  margin: 1rem 0;
   width: 100%;
   text-align: center;
 }
@@ -33,7 +33,7 @@ body {
 }
 
 main {
-  width: 147px;
+  width: 164px;
   margin: 0 auto;
 }
 
