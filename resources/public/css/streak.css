@@ -24,12 +24,12 @@ body {
 
 #decrement-year {
   left: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="40"><path d="M16.5,7.5 L4.5,20 L16.5,32.5" fill="none" stroke="#999" stroke-width="7" stroke-linecap="round"></path></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="40"><path d="M16.5,7.5 L4.5,20 L16.5,32.5" fill="none" stroke="%23999" stroke-width="7" stroke-linecap="round"></path></svg>');
 }
 
 #increment-year {
   right: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="40"><path d="M3.5,7.5 L15.5,20 L3.5,32.5" fill="none" stroke="#999" stroke-width="7" stroke-linecap="round"></path></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="40"><path d="M3.5,7.5 L15.5,20 L3.5,32.5" fill="none" stroke="%23999" stroke-width="7" stroke-linecap="round"></path></svg>');
 }
 
 main {
