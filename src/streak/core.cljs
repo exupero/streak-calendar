@@ -2,6 +2,8 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs.core.async :as async :refer [chan]]
             [cljs.core.match :refer-macros [match]]
+            cljsjs.d3
+            cljsjs.vdom
             [vdom.elm :refer [foldp event render!]]))
 
 (enable-console-print!)
@@ -82,8 +84,7 @@
                   (str "calendar-" (:year model) ".png"))
                 model)))
 
-(go
-  (let [actions (chan)
-        initial-model {:year (.getFullYear (js/Date.))}
-        models (foldp step initial-model actions)]
-    (render! (async/map (ui actions) [models]) js/document.body)))
+(let [actions (chan)
+      initial-model {:year (.getFullYear (js/Date.))}
+      models (foldp step initial-model actions)]
+  (render! (async/map (ui actions) [models]) js/document.body))

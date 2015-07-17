@@ -13,18 +13,24 @@
     (remove nil?)))
 
 (defn html-node [tag attrs children]
-  (new js/VDOM.VHtml (name tag) (clj->js attrs) (clj->js children)))
+  (js/VDOM.VHtml. (name tag) (clj->js attrs) (clj->js children)))
 
 (defn svg-node [tag attrs children]
-  (new js/VDOM.VSvg (name tag) (clj->js attrs) (clj->js children)))
+  (js/VDOM.VSvg. (name tag) (clj->js attrs) (clj->js children)))
 
 (defn text-node [s]
-  (new js/VDOM.VText s))
+  (js/VDOM.VText. s))
 
 (declare svg-tree)
 
 (defn html-tree [arg]
   (cond
+    (nil? arg)
+    (text-node "")
+
+    (seq? arg)
+    (html-node :div {} (map html-tree (flatten-children arg)))
+
     (string? arg)
     (text-node arg)
 
@@ -40,6 +46,9 @@
 
 (defn svg-tree [arg]
   (cond
+    (nil? arg)
+    (text-node "")
+
     (string? arg)
     (text-node arg)
 
@@ -64,6 +73,5 @@
     (fn [view]
       (let [new-tree (html-tree view)
             patches (diff @tree new-tree)]
-        (update (fn []
-                  (swap! root patch patches)
-                  (reset! tree new-tree)))))))
+        (reset! tree new-tree)
+        (update #(swap! root patch patches))))))

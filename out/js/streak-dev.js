@@ -1,4 +1,5 @@
 goog.addDependency("base.js", ['goog'], []);
+goog.addDependency("../vdom.inc.js", ['cljsjs.vdom'], []);
 goog.addDependency("../cljs/core.js", ['cljs.core'], ['goog.string', 'goog.object', 'goog.string.StringBuffer', 'goog.array']);
 goog.addDependency("../cljs/core/async/impl/protocols.js", ['cljs.core.async.impl.protocols'], ['cljs.core']);
 goog.addDependency("../cljs/core/async/impl/buffers.js", ['cljs.core.async.impl.buffers'], ['cljs.core', 'cljs.core.async.impl.protocols']);
@@ -10,4 +11,5 @@ goog.addDependency("../cljs/core/async.js", ['cljs.core.async'], ['cljs.core.asy
 goog.addDependency("../vdom/core.js", ['vdom.core'], ['cljs.core', 'cljs.core.async']);
 goog.addDependency("../vdom/elm.js", ['vdom.elm'], ['vdom.core', 'cljs.core', 'cljs.core.async']);
 goog.addDependency("../cljs/core/match.js", ['cljs.core.match'], ['cljs.core']);
-goog.addDependency("../streak/core.js", ['streak.core'], ['cljs.core', 'cljs.core.async', 'vdom.elm', 'cljs.core.match']);
+goog.addDependency("../d3.inc.js", ['cljsjs.d3'], []);
+goog.addDependency("../streak/core.js", ['streak.core'], ['cljsjs.vdom', 'cljs.core', 'cljs.core.async', 'vdom.elm', 'cljs.core.match', 'cljsjs.d3']);

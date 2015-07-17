@@ -18,6 +18,12 @@ vdom.core.text_node = (function vdom$core$text_node(s){
 return (new VDOM.VText(s));
 });
 vdom.core.html_tree = (function vdom$core$html_tree(arg){
+if((arg == null)){
+return vdom.core.text_node.call(null,"");
+} else {
+if(cljs.core.seq_QMARK_.call(null,arg)){
+return vdom.core.html_node.call(null,new cljs.core.Keyword(null,"div","div",1057191632),cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,vdom$core$html_tree,vdom.core.flatten_children.call(null,arg)));
+} else {
 if(typeof arg === 'string'){
 return vdom.core.text_node.call(null,arg);
 } else {
@@ -27,17 +33,22 @@ return vdom.core.text_node.call(null,arg);
 if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"svg","svg",856789142),cljs.core.first.call(null,arg))){
 return vdom.core.svg_tree.call(null,arg);
 } else {
-var vec__11736 = arg;
-var tag = cljs.core.nth.call(null,vec__11736,(0),null);
-var attrs = cljs.core.nth.call(null,vec__11736,(1),null);
-var children = cljs.core.nthnext.call(null,vec__11736,(2));
+var vec__13302 = arg;
+var tag = cljs.core.nth.call(null,vec__13302,(0),null);
+var attrs = cljs.core.nth.call(null,vec__13302,(1),null);
+var children = cljs.core.nthnext.call(null,vec__13302,(2));
 return vdom.core.html_node.call(null,tag,attrs,cljs.core.map.call(null,vdom$core$html_tree,vdom.core.flatten_children.call(null,children)));
 
 }
 }
 }
+}
+}
 });
 vdom.core.svg_tree = (function vdom$core$svg_tree(arg){
+if((arg == null)){
+return vdom.core.text_node.call(null,"");
+} else {
 if(typeof arg === 'string'){
 return vdom.core.text_node.call(null,arg);
 } else {
@@ -45,18 +56,19 @@ if(typeof arg === 'number'){
 return vdom.core.text_node.call(null,arg);
 } else {
 if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"foreignObject","foreignObject",25502111),cljs.core.first.call(null,arg))){
-var vec__11739 = arg;
-var tag = cljs.core.nth.call(null,vec__11739,(0),null);
-var attrs = cljs.core.nth.call(null,vec__11739,(1),null);
-var children = cljs.core.nthnext.call(null,vec__11739,(2));
+var vec__13305 = arg;
+var tag = cljs.core.nth.call(null,vec__13305,(0),null);
+var attrs = cljs.core.nth.call(null,vec__13305,(1),null);
+var children = cljs.core.nthnext.call(null,vec__13305,(2));
 return vdom.core.svg_node.call(null,tag,attrs,cljs.core.map.call(null,vdom.core.html_tree,vdom.core.flatten_children.call(null,children)));
 } else {
-var vec__11740 = arg;
-var tag = cljs.core.nth.call(null,vec__11740,(0),null);
-var attrs = cljs.core.nth.call(null,vec__11740,(1),null);
-var children = cljs.core.nthnext.call(null,vec__11740,(2));
+var vec__13306 = arg;
+var tag = cljs.core.nth.call(null,vec__13306,(0),null);
+var attrs = cljs.core.nth.call(null,vec__13306,(1),null);
+var children = cljs.core.nthnext.call(null,vec__13306,(2));
 return vdom.core.svg_node.call(null,tag,attrs,cljs.core.map.call(null,vdom$core$svg_tree,vdom.core.flatten_children.call(null,children)));
 
+}
 }
 }
 }
@@ -79,11 +91,11 @@ return ((function (tree,root,update){
 return (function (view){
 var new_tree = vdom.core.html_tree.call(null,view);
 var patches = vdom.core.diff.call(null,cljs.core.deref.call(null,tree),new_tree);
+cljs.core.reset_BANG_.call(null,tree,new_tree);
+
 return update.call(null,((function (new_tree,patches,tree,root,update){
 return (function (){
-cljs.core.swap_BANG_.call(null,root,vdom.core.patch,patches);
-
-return cljs.core.reset_BANG_.call(null,tree,new_tree);
+return cljs.core.swap_BANG_.call(null,root,vdom.core.patch,patches);
 });})(new_tree,patches,tree,root,update))
 );
 });
