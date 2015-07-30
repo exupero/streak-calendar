@@ -3,7 +3,6 @@
   (:require [cljs.core.async :as async :refer [chan]]
             [cljs.core.match :refer-macros [match]]
             cljsjs.d3
-            cljsjs.vdom
             [vdom.elm :refer [foldp event render!]]))
 
 (enable-console-print!)

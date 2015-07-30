@@ -8,7 +8,6 @@
                  [org.clojure/core.match  "0.3.0-alpha4"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [cljsjs/d3 "3.5.5-3"]
-                 [cljsjs/vdom "0.1.0-0"]
                  [vdom "0.1.0-SNAPSHOT"]]
   :plugins [[lein-cljsbuild "0.3.2"]]
   :cljsbuild {:builds {:dev {:source-paths ["src"]
@@ -29,6 +28,7 @@
                               :assert true
                               :compiler {:output-to "out/js/streak.js"
                                          :warnings true
+                                         :externs ["externs/vdom.js"]
                                          :elide-asserts true
                                          :optimizations :advanced
                                          :pretty-print false
