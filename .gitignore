@@ -2,5 +2,7 @@ target
 .lein-repl-history
 .nrepl-port
 checkouts
-out
+
+!out
+out/js/*
 !out/js/streak.js
